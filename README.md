@@ -10,7 +10,6 @@ Requirements
 
 1.1 User will simply have ot hit something to initialize the process.
 
-2.  Will include more options in the future
 
 Future Goal
 ============
