@@ -1,0 +1,28 @@
+var myShapes = new Array(3);
+
+for(var i = 0; i < 3; i += 1)
+{
+    myShapes[i] = new Array(3);
+}
+
+myShapes[0][0] = "Red Circle";
+myShapes[0][1] = "Blue Circle";
+myShapes[0][2] = "Green Circle";
+myShapes[1][0] = "Red Triangle";
+myShapes[1][1] = "Blue Triangle";
+myShapes[1][2] = "Green Triangle";
+myShapes[2][0] = "Red Square";
+myShapes[2][1] = "Blue Square";
+myShapes[2][2] = "Green Square";
+
+var number1 = Math.floor((Math.random() * 3) + 0);
+var number2 = Math.floor((Math.random() * 3) + 0);
+var color1 = Math.floor((Math.random() * 3) + 0);
+var color2 = Math.floor((Math.random() * 3) + 0);
+
+while(number1 == number2)
+{
+    number2 = Math.floor((Math.random() * 3) + 0);
+}
+
+console.log("(" + myShapes[number1][color1] + ", " + myShapes[number2][color2] + ")");
