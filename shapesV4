@@ -1,0 +1,99 @@
+var shapeArray = new Array(3);
+
+for(var i = 0; i < 3; i += 1)
+{
+    shapeArray[i] = new Array(3);
+}
+
+shapeArray[0][0] = "Red Circle";
+shapeArray[0][1] = "Blue Circle";
+shapeArray[0][2] = "Green Circle";
+shapeArray[1][0] = "Red Triangle";
+shapeArray[1][1] = "Blue Triangle";
+shapeArray[1][2] = "Green Triangle";
+shapeArray[2][0] = "Red Square";
+shapeArray[2][1] = "Blue Square";
+shapeArray[2][2] = "Green Square";
+
+var userContinue = 1;
+var tempArray = new Array(2);
+var history = new Array(5);
+
+for(var i = 0; i < 5; i += 1)
+{
+  history[i] = new Array(2);
+}
+
+for(var i = 0; i < 5; i += 1)
+{
+	for(var j = 0; j < 2; j += 1)
+	{
+		history[i][j] = 0;
+	}
+}
+
+while(userContinue == 1)
+{
+	var userChoice = 0;
+
+	while(userChoice != 1 && userChoice != 2)
+	{
+		userChoice = prompt("Please choose an option: \n 1. New Configuration\n 2. History");
+	}
+
+	if(userChoice == 1)
+	{
+		tempArray = newConfig(shapeArray);
+
+		for(var i = 4; i >= 1; i -= 1)
+		{
+			for(var j = 1; j >= 0; j -= 1)
+			{
+				history[i][j] = history[i - 1][j];
+			}
+		}
+
+		history[0][0] = tempArray[0];
+		history[0][1] = tempArray[1];
+
+		console.log("(" + tempArray[0] + ", " + tempArray[1] + ")");
+	}
+	else
+	{
+		for(var i = 0; i < 5; i += 1)
+		{
+			if(history[i][0] != 0)
+			{
+				console.log("(" + history[i][0] + ", " + history[i][1] + ")");
+			}
+		}
+	}
+
+	userContinue = prompt("Do you wish to create another configuration? (1 for yes, 0 for no): ");
+
+	while(userContinue != 0 && userContinue != 1)
+	{
+		userContinue = prompt("Do you wish to create another configuration? (1 for yes, 0 for no): ");
+	}
+}
+
+//FUNCTIONS
+var newConfig = function(myShapes)
+{
+	var config = new Array(2);
+
+	var number1 = Math.floor((Math.random() * 3) + 0);
+	var number2 = Math.floor((Math.random() * 3) + 0);
+	var color1 = Math.floor((Math.random() * 3) + 0);
+	var color2 = Math.floor((Math.random() * 3) + 0);
+
+	while(number1 == number2)
+	{
+	    number2 = Math.floor((Math.random() * 3) + 0);
+	}
+
+	config[0] = myShapes[number1][color1];
+	config[1] = myShapes[number2][color2];
+
+	return config;
+};
